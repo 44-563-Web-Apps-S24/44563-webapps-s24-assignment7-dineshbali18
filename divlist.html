@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>List of Items</title>
+	<style>
+		.flex-container {
+			display: flex;
+			flex-direction: row;
+			background-color: greenyellow;
+		}
+
+		.flex-container>div {
+			/*div children of the flex container*/
+			background-color: blueviolet;
+			margin: 10px;
+			padding: 20px;
+			font-size: 30px;
+		}
+
+		/* Responsive layout */
+		@media (max-width: 600px) {
+			.flex-container {
+				flex-direction: column;
+				background-color: green;
+			}
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<h1>Dinesh Bali list with divs</h1>
+	<input type="text" style="margin-bottom: 10px;">
+
+	<div class="flex-container" id="target">
+		<div class="divlist">row item 1</div>
+		<div class="divlist">row item 2</div>
+		<div class="divlist">row item 3</div>
+	</div>
+
+	<p> Press the button to create an new element of type div and then add it to the container.
+	</p>
+	<button onclick="makeNewDiv()">Add end</button>
+	<button onclick="addFront()">Add Front</button>
+	<button onclick="remove()">Remove</button>
+	<button onclick="swap()">Swap</button>
+	
+
+
+
+
+</body>
+<script>
+	function makeNewDiv() {
+		let element = document.createElement("div")
+		element.innerHTML = document.querySelector("input").value
+		element.style.color = "pink"
+		let container = document.getElementById('target')
+		container.appendChild(element)
+
+	}
+
+	function remove() {
+		let divListItems = document.getElementsByClassName("divlist");
+		var len = divListItems.length;
+		if (len > 0) {
+			var middleIndex = Math.floor(len / 2);
+			divListItems[middleIndex].remove()
+		}
+	}
+
+	function addFront() {
+		let element = document.createElement("div");
+		element.innerHTML = document.querySelector("input").value
+		element.style.color = "blue"
+		let container = document.getElementById('target')
+		container.insertBefore(element, container.firstChild);
+	}
+
+	function swap() {
+		var container = document.getElementById('target');
+		var len = container.children.length;
+
+		if (len > 1) {
+			var index1 = Math.floor(Math.random() * len);
+			var index2;
+
+			do {
+				index2 = Math.floor(Math.random() * len);
+			} while (index1 === index2);
+
+			var element1 = container.children[index1];
+			var element2 = container.children[index2];
+
+			container.insertBefore(element2, container.children[index1]);
+			container.insertBefore(element1, container.children[index2]);
+		}
+	}
+
+
+</script>
+
+</html>
