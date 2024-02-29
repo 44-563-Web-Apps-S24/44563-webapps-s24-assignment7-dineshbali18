@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>Precison Checker</title>
+  <title>Precision HTML</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -10,25 +9,19 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-
 <body>
 
-  <h2>Dinesh Bali Speed Check</h2>
+<header>
+  <h1 class="text text-primary" style="text-align: center">Dinesh Bali speed check</h1>
+</header>
 
-  <div id="target">
-    Your Time
-  </div>
-  <div id="counter">
-    Count
-  </div>
+<div id="target">Your time</div>
+<div id="counter">Count</div>
 
-  <button type="button" class="btn btn-info" onclick="startTime()">
-    Start Timer</button>
-
-  <button type="button" class="btn btn-info" onclick="recordTime()">
-    Stop Timer</button>
-
-  <script>
+<button type="button" id="startBtn" class="btn btn-info" onclick="startTime()">Start Timer</button>
+<button type="button" id="stopBtn" class="btn btn-danger" onclick="recordTime()">Stop Timer</button>
+  
+<script>
     var stopTime = undefined;
     var startingTime = undefined;
     var maxCountDown = 0;
@@ -60,7 +53,5 @@
     }
     
   </script>
-
 </body>
-
 </html>
