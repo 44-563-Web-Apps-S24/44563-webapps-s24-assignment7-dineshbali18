@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Precision HTML</title>
+  <title>Precison Checker</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -9,47 +10,57 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
-<header>
-  <h1 class="text text-primary" style="text-align: center">Dinesh Bali speed check</h1>
-</header>
+  <h2>Dinesh Bali Speed Check</h2>
 
-<div id="target">Your time</div>
-<div id="counter">Count</div>
+  <div id="target">
+    Your Time
+  </div>
+  <div id="counter">
+    Count
+  </div>
 
-<button type="button" id="startBtn" class="btn btn-info">Start Timer</button>
-<button type="button" id="stopBtn" class="btn btn-danger">Stop Timer</button>
-  
-<script> 
-let stopTime = undefined;
+  <button type="button" class="btn btn-info" onclick="startTime()">
+    Start Timer</button>
 
-function recordTime() {
-    stopTime = Date.now();
-    console.log(stopTime);
-}
+  <button type="button" class="btn btn-info" onclick="recordTime()">
+    Stop Timer</button>
 
-document.getElementById('stopBtn').onclick = recordTime;
+  <script>
+    var stopTime = undefined;
+    var startingTime = undefined;
+    var maxCountDown = 0;
 
-function startTime() {
-
-  random = Math.floor(Math.random() * 9)+2;
-  for (let i = 0; i <random; i++){
-        setTimeout(function() {
-            document.getElementById('counter').innerHTML = i;
-        }, (4 - i) * 1000);
+    function recordTime() {
+      stopTime = Date.now()
+      console.log(stopTime);
     }
-    setTimeout(function() {
-        if (stopTime === undefined) {
-            document.getElementById('target').innerHTML = "Too Slow";
-        } else {
-            let elapsedTime = stopTime - (Date.now() - 4000);
-            document.getElementById('target').innerHTML = "Time was " + elapsedTime + "ms";
-        }
-    }, 4000);
-}
 
-document.getElementById('startBtn').onclick = startTime;
-</script>
+    function startTime() {
+      stopTime = undefined;
+      startingTime = Date.now()
+      //maxCountDown=5;
+      maxCountDown = Math.floor(Math.random() * 8) + 2
+      for (let i = 0; i <=maxCountDown; i++) {
+        setTimeout(function () {
+          document.getElementById('counter').innerHTML = i;
+        }, (maxCountDown - i) * 1000)
+      }
+      setTimeout(function () {
+        if (stopTime === undefined) {
+          document.getElementById("target").innerHTML = "Too Slow"
+        } else {
+          let elapsedTime = stopTime - startingTime;
+          document.getElementById('target').innerHTML = "Time was " + Math.abs(elapsedTime) + " milliseconds";
+        }
+      }, maxCountDown * 1000);
+
+    }
+    
+  </script>
+
 </body>
+
 </html>
